@@ -15,6 +15,7 @@ public class WBTest extends BaseTest {
         tabBarSteps.clickCatalogButton();
         catalogSteps.clickSectionButton("Женщинам");
         catalogSteps.clickSubsectionButton("Брюки");
+        catalogSteps.clickNextSubsectionButton("no");
 
         Assert.assertTrue(catalogSteps.extractTextFromTitle().equals("Брюки"));
     }
