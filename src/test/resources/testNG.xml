@@ -8,6 +8,7 @@
             <class name="org.akavity.WBTest">
                 <methods>
                     <include name="moveThroughCatalog"/>
+                    <include name="lookForInformation()"/>
                 </methods>
             </class>
         </classes>
