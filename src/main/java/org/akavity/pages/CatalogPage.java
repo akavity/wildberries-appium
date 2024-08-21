@@ -21,5 +21,4 @@ public class CatalogPage {
     public SelenideAppiumElement getTitleField() {
         return titleField;
     }
-
 }
