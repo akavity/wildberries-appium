@@ -6,7 +6,6 @@ import org.akavity.pages.CartPage;
 
 @Log4j2
 public class CartSteps {
-
     CartPage cartPage = new CartPage();
 
     @Step

@@ -4,10 +4,10 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.ProductListPage;
+import org.akavity.utils.Utils;
 
 @Log4j2
 public class ProductListSteps {
-
     ProductListPage productListPage = new ProductListPage();
 
     @Step
@@ -16,5 +16,11 @@ public class ProductListSteps {
         boolean result = el.getText().toLowerCase().contains(figure.toLowerCase());
         log.info("Is product {} displayed: {} - '{}'", figure, result, el.getText());
         return result;
+    }
+
+    @Step
+    public void clickFirstProduct() {
+        log.info("Click on the first product");
+        productListPage.getProducts().first().click();
     }
 }

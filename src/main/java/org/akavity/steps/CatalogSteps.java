@@ -6,7 +6,6 @@ import org.akavity.pages.CatalogPage;
 
 @Log4j2
 public class CatalogSteps {
-
     CatalogPage catalogPage = new CatalogPage();
 
     @Step
