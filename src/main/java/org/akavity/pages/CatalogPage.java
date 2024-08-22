@@ -6,9 +6,7 @@ import io.appium.java_client.AppiumBy;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class CatalogPage {
-
     private final SelenideAppiumElement titleField = $(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.wildberries.ru:id/toolbarTitle']"));
-
 
     public SelenideAppiumElement getSectionButton(String text) {
         return $(AppiumBy.xpath("//android.view.View[@content-desc='" + text + "']"));
