@@ -39,4 +39,12 @@ public class WBTest extends BaseTest {
 
         Assert.assertTrue(cartSteps.isTheProductDisplayed("redmi note 13"));
     }
+
+    @Test(dependsOnMethods = "addProductToCart")
+    public void removeProductFromCart() {
+        tabBarSteps.clickCartButton();
+        cartSteps.removeProduct();
+
+        Assert.assertTrue(cartSteps.isTheCartEmpty());
+    }
 }

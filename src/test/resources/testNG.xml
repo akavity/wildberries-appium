@@ -10,6 +10,7 @@
                     <include name="moveThroughCatalog"/>
                     <include name="lookForTheProduct"/>
                     <include name="addProductToCart"/>
+                    <include name="removeProductFromCart"/>
                 </methods>
             </class>
         </classes>

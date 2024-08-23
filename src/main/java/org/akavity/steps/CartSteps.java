@@ -22,4 +22,11 @@ public class CartSteps {
         log.info("Is the product {} displayed: {} - '{}'", text, result, product);
         return result;
     }
+
+    @Step
+    public void removeProduct() {
+        log.info("Remove a product from the cart");
+        cartPage.getProductMenuButton().click();
+        cartPage.getRemoveProductButton().click();
+    }
 }

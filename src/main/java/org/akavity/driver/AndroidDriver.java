@@ -16,7 +16,6 @@ import java.util.Map;
 
 @ParametersAreNonnullByDefault
 public class AndroidDriver implements WebDriverProvider {
-
     @Override
     @CheckReturnValue
     @Nonnull
