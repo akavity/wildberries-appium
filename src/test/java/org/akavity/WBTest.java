@@ -1,6 +1,11 @@
 package org.akavity;
 
+import org.akavity.annotations.TestData;
+import org.akavity.models.CartData;
+import org.akavity.models.CatalogData;
+import org.akavity.models.ProductData;
 import org.akavity.steps.*;
+import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,35 +17,38 @@ public class WBTest extends BaseTest {
     ProductSteps productSteps = new ProductSteps();
     CartSteps cartSteps = new CartSteps();
 
-    @Test
-    public void moveThroughCatalog() {
+    @TestData(jsonFile = "catalogData", model = "CatalogData")
+    @Test(description = "Catalog navigation", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void moveThroughCatalog(CatalogData catalog) {
         tabBarSteps.clickCatalogButton();
-        catalogSteps.clickSectionButton("Женщинам");
-        catalogSteps.clickSubsectionButton("Брюки");
-        catalogSteps.clickNextSubsectionButton("no");
+        catalogSteps.clickSectionButton(catalog.getSection());
+        catalogSteps.clickSubsectionButton(catalog.getSubsection());
+        catalogSteps.clickNextSubsectionButton(catalog.getNextSubsection());
 
-        Assert.assertTrue(catalogSteps.extractTextFromTitle().equals("Брюки"));
+        Assert.assertTrue(catalogSteps.extractTextFromTitle().equals(catalog.getTitle()));
     }
 
-    @Test
-    public void lookForTheProduct() {
-        homeSteps.setTextToSearch("куртка мужская");
-        homeSteps.clickSuggest("куртка мужская");
+    @TestData(jsonFile = "productData", model = "ProductData")
+    @Test(description = "Search the product", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void lookForTheProduct(ProductData product) {
+        homeSteps.setTextToSearch(product.getText());
+        homeSteps.clickSuggest(product.getSuggest());
 
-        Assert.assertTrue(productListSteps.isProductDisplayed("Куртка"));
+        Assert.assertTrue(productListSteps.isProductDisplayed(product.getFigureText()));
     }
 
-    @Test
-    public void addProductToCart() {
-        homeSteps.enterTextToSearch("redmi note 13");
+    @TestData(jsonFile = "cartData", model = "CartData")
+    @Test(description = "Adding a product to the cart", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void addProductToCart(CartData cart) {
+        homeSteps.enterTextToSearch(cart.getProductName());
         productListSteps.clickFirstProduct();
         productSteps.clickAddToCartButton();
         tabBarSteps.clickCartButton();
 
-        Assert.assertTrue(cartSteps.isTheProductDisplayed("redmi note 13"));
+        Assert.assertTrue(cartSteps.isTheProductDisplayed(cart.getProductName()));
     }
 
-    @Test(dependsOnMethods = "addProductToCart")
+    @Test(dependsOnMethods = "addProductToCart", description = "Removing the product from the cart")
     public void removeProductFromCart() {
         tabBarSteps.clickCartButton();
         cartSteps.removeProduct();
