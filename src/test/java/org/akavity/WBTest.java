@@ -25,7 +25,7 @@ public class WBTest extends BaseTest {
         catalogSteps.clickSubsectionButton(catalog.getSubsection());
         catalogSteps.clickNextSubsectionButton(catalog.getNextSubsection());
 
-        Assert.assertTrue(catalogSteps.extractTextFromTitle().equals(catalog.getTitle()));
+        Assert.assertEquals(catalog.getTitle(), catalogSteps.extractTextFromTitle());
     }
 
     @TestData(jsonFile = "productData", model = "ProductData")
@@ -41,8 +41,7 @@ public class WBTest extends BaseTest {
     @Test(description = "Adding a product to the cart", dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void addProductToCart(CartData cart) {
         homeSteps.enterTextToSearch(cart.getProductName());
-        productListSteps.clickFirstProduct();
-        productSteps.clickAddToCartButton();
+        productListSteps.clickFirstAddToCartButton();
         tabBarSteps.clickCartButton();
 
         Assert.assertTrue(cartSteps.isTheProductDisplayed(cart.getProductName()));
@@ -52,6 +51,7 @@ public class WBTest extends BaseTest {
     public void removeProductFromCart() {
         tabBarSteps.clickCartButton();
         cartSteps.removeProduct();
+        tabBarSteps.clickCartButton();
 
         Assert.assertTrue(cartSteps.isTheCartEmpty());
     }

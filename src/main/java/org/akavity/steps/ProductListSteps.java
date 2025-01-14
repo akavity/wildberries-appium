@@ -22,4 +22,10 @@ public class ProductListSteps {
         log.info("Click on the first product");
         productListPage.getProducts().first().click();
     }
+
+    @Step
+    public void clickFirstAddToCartButton() {
+        log.info("Click on the first 'Add to cart' button");
+        productListPage.getAddToCartButtons().first().click();
+    }
 }
