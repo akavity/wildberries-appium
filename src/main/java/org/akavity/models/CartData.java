@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CartData {
     String productName;
+    String[] partOfName;
 }

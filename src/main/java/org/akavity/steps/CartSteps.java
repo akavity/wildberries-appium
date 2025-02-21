@@ -16,10 +16,17 @@ public class CartSteps {
     }
 
     @Step
-    public boolean isTheProductDisplayed(String text) {
-        String product = cartPage.getProductNameField().getText();
-        boolean result = product.toLowerCase().contains(text.toLowerCase());
-        log.info("Is the product {} displayed: {} - '{}'", text, result, product);
+    public boolean checkProductName(String[] partsOfName) {
+        boolean result = true;
+        String product = cartPage.getProductNameFields().get(0).getText().toLowerCase();
+        for (String part : partsOfName) {
+            if (!product.contains(part.toLowerCase())) {
+                log.info("Product '{}' does NOT contain '{}'", product, part);
+                result = false;
+            } else {
+                log.info("Product '{}' contains '{}'", product, part);
+            }
+        }
         return result;
     }
 

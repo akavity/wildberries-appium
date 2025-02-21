@@ -14,7 +14,6 @@ public class WBTest extends BaseTest {
     CatalogSteps catalogSteps = new CatalogSteps();
     HomeSteps homeSteps = new HomeSteps();
     ProductListSteps productListSteps = new ProductListSteps();
-    ProductSteps productSteps = new ProductSteps();
     CartSteps cartSteps = new CartSteps();
 
     @TestData(jsonFile = "catalogData", model = "CatalogData")
@@ -44,7 +43,7 @@ public class WBTest extends BaseTest {
         productListSteps.clickFirstAddToCartButton();
         tabBarSteps.clickCartButton();
 
-        Assert.assertTrue(cartSteps.isTheProductDisplayed(cart.getProductName()));
+        Assert.assertTrue(cartSteps.checkProductName(cart.getPartOfName()));
     }
 
     @Test(dependsOnMethods = "addProductToCart", description = "Removing the product from the cart")
