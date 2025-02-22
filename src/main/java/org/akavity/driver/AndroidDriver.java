@@ -1,24 +1,25 @@
 package org.akavity.driver;
 
 import com.codeborne.selenide.WebDriverProvider;
+import com.google.errorprone.annotations.CheckReturnValue;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.remote.AutomationName;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.NullMarked;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
-import javax.annotation.CheckReturnValue;
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-@ParametersAreNonnullByDefault
+@NullMarked
 public class AndroidDriver implements WebDriverProvider {
     @Override
     @CheckReturnValue
-    @Nonnull
+    @NonNull
     public WebDriver createDriver(Capabilities capabilities) {
         Map<String, Object> map = new HashMap<>();
         map.put("ignoreUnimportantViews", false);
