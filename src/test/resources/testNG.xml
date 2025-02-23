@@ -5,7 +5,7 @@
 
     <test name="Medium Tablet">
         <classes>
-            <class name="org.akavity.WBTest">
+            <class name="org.akavity.mobile.android.tests.WBTest">
                 <methods>
                     <include name="moveThroughCatalog"/>
                     <include name="lookForTheProduct"/>
