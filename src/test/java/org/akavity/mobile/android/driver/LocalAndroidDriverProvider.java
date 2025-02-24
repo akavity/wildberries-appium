@@ -35,9 +35,7 @@ public abstract class LocalAndroidDriverProvider implements WebDriverProvider {
         options.setPlatformName("Android");
         options.setDeviceName("Pixel 8 Pro");
         options.setPlatformVersion("14.0");
-//        options.setNewCommandTimeout(Duration.ofSeconds(11)); //
-//        options.setFullReset(false);                          //
-        options.noReset();                                    //
+        options.noReset();
         options.setCapability("appium:settings", getAppiumSettings());
         return options;
     }

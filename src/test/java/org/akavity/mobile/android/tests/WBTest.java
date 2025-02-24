@@ -1,4 +1,4 @@
-package org.akavity;
+package org.akavity.mobile.android.tests;
 
 import org.akavity.annotations.TestData;
 import org.akavity.models.CartData;
@@ -9,7 +9,7 @@ import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class WBTest extends BaseTest {
+public class WBTest extends BaseLocalTest {
     TabBarSteps tabBarSteps = new TabBarSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
     HomeSteps homeSteps = new HomeSteps();
