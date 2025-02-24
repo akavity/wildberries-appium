@@ -19,25 +19,16 @@ public class Apps {
     }
 
     private static File downloadSampleApp(String remoteFilePath, String filename) {
-        // Создаётся объект File
         File app = new File("build/apps", filename);
-        // Проверяется, существует ли уже файл
         if (app.exists()) {
             log.info("Using pre-downloaded app: {}", app.getAbsolutePath());
             return app;
         }
-        // Создаётся директория, если её нет
         if (!app.getParentFile().exists() && !app.getParentFile().mkdirs()) {
-            // Если создать её не удаётся, выбрасывается исключение.
             throw new RuntimeException("Failed to create dir " + app.getParentFile().getAbsolutePath());
         }
-        // Формируется URL для загрузки файла.
         String url = remoteFilePath + filename;
         log.info("Downloading app {} to {}...", url, app.getAbsolutePath());
-        // Загружается файл через поток.
-        // Открывается поток (InputStream) для чтения файла по URL.
-        // Метод copyInputStreamToFile(in, app) копирует данные из потока в локальный файл.
-        // Если происходит ошибка (IOException), выбрасывается исключение с сообщением
         try (InputStream in = new URL(url).openStream()) {
             copyInputStreamToFile(in, app);
         } catch (IOException e) {
