@@ -2,11 +2,14 @@ package org.akavity.utils;
 
 import com.codeborne.selenide.appium.AppiumDriverRunner;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
+import java.time.Duration;
+
 public class Utils {
-    final int X_OFFSET = 1230;
-    final int Y_OFFSET = 2735;
+    private int START_X = 1000; //
+    private int END_X = 180;    //
 
     public void sleep(long millis) {
         try {
@@ -24,8 +27,16 @@ public class Utils {
         }
     }
 
-    public void pressSearchButton() {
+    public void pressElement(int xOffset, int yOffset) {
         TouchAction touch = new TouchAction(AppiumDriverRunner.getAndroidDriver());
-        touch.press(PointOption.point(X_OFFSET, Y_OFFSET)).release().perform();
+        touch.press(PointOption.point(xOffset, yOffset)).release().perform();
+    }
+
+    public void swipeElementLeft(int y) {
+        TouchAction touch = new TouchAction(AppiumDriverRunner.getAndroidDriver());
+        touch.press(PointOption.point(START_X, y))      // startY
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+                .moveTo(PointOption.point(END_X, y))    // endY
+                .release().perform();
     }
 }
