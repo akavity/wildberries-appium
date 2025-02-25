@@ -11,6 +11,7 @@
                     <include name="lookForTheProduct"/>
                     <include name="addProductToCart"/>
                     <include name="removeProductFromCart"/>
+                    <include name="selectTrend"/>
                 </methods>
             </class>
         </classes>

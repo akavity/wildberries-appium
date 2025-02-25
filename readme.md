@@ -6,6 +6,7 @@
 * Test 2. Search the product.
 * Test 3. Adding a product to the cart.
 * Test 4. Removing the product from the cart.
+* Test 5. Select trend.
 
 ## Technologies:
 
