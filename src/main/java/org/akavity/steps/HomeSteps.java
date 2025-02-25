@@ -7,6 +7,9 @@ import org.akavity.utils.Utils;
 
 @Log4j2
 public class HomeSteps {
+    private final int X_OFFSET = 1230;
+    private final int Y_OFFSET = 2735;
+
     HomePage homePage = new HomePage();
     Utils utils = new Utils();
 
@@ -22,7 +25,7 @@ public class HomeSteps {
         log.info("Set {} to search and press enter", text);
         homePage.getSearchField().click();
         homePage.getSearchField().setValue(text);
-        utils.pressSearchButton();
+        utils.pressElement(X_OFFSET, Y_OFFSET);
     }
 
     @Step
