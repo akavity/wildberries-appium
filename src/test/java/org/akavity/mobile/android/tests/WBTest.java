@@ -4,6 +4,7 @@ import org.akavity.annotations.TestData;
 import org.akavity.models.CartData;
 import org.akavity.models.CatalogData;
 import org.akavity.models.ProductData;
+import org.akavity.models.TrendData;
 import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
 import org.testng.Assert;
@@ -53,5 +54,15 @@ public class WBTest extends BaseLocalTest {
         tabBarSteps.clickCartButton();
 
         Assert.assertTrue(cartSteps.isTheCartEmpty());
+    }
+
+    @TestData(jsonFile = "trendData", model = "TrendData")
+    @Test(description = "Select the trend", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void selectTrend(TrendData trendData) {
+        tabBarSteps.clickCatalogButton();
+        catalogSteps.clickTrendsButton();
+        catalogSteps.selectTrend(trendData.getName());
+
+        Assert.assertTrue(catalogSteps.isTrendTitleDisplayed(trendData.getTitle()));
     }
 }
