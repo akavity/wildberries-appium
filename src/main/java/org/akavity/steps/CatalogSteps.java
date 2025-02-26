@@ -3,6 +3,7 @@ package org.akavity.steps;
 import com.codeborne.selenide.appium.SelenideAppiumElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import org.akavity.enums.ButtonType;
 import org.akavity.pages.CatalogPage;
 import org.akavity.utils.Utils;
 
@@ -17,34 +18,6 @@ public class CatalogSteps {
     Utils utils = new Utils();
 
     @Step
-    public void clickSectionButton(String text) {
-        log.info("Click section of catalog: {}", text);
-        catalogPage.getSectionButton(text)
-                .scrollTo()
-                .click();
-    }
-
-    @Step
-    public void clickSubsectionButton(String text) {
-        log.info("Click subsection of catalog: {}", text);
-        catalogPage.getSubsectionButton(text)
-                .scrollTo()
-                .click();
-    }
-
-    @Step
-    public void clickNextSubsectionButton(String text) {
-        if (text.equalsIgnoreCase("no")) {
-            log.info("There isn't next subsection");
-        } else {
-            log.info("Click next subsection of catalog: {}", text);
-            catalogPage.getSubsectionButton(text)
-                    .scrollTo()
-                    .click();
-        }
-    }
-
-    @Step
     public String extractTextFromTitle() {
         String text = catalogPage.getTitleField().getText();
         log.info("Extract text from Title: {}", text);
@@ -55,7 +28,7 @@ public class CatalogSteps {
     public void selectTrend(String name) {
         SelenideAppiumElement el = catalogPage.getTrend(name);
         int count = 0;
-        utils.sleep(1500);
+        utils.sleep(2500);
         while (count < 6) {
             if (el.isDisplayed()) {
                 log.info("The item is displayed: Click the item");
@@ -72,7 +45,7 @@ public class CatalogSteps {
     @Step
     public void clickTrendsButton() {
         log.info("Click trend button");
-        utils.pressElement(TRENDS_BUTTON_X_OFFSET, TRENDS_BUTTON_Y_OFFSET);
+        utils.clickPoint(TRENDS_BUTTON_X_OFFSET, TRENDS_BUTTON_Y_OFFSET);
     }
 
     @Step
@@ -80,5 +53,30 @@ public class CatalogSteps {
         boolean result = catalogPage.getTrendTitle(title).isDisplayed();
         log.info("Is trend title '{}' displayed: {}", title, result);
         return result;
+    }
+
+    @Step
+    public void clickSubsectionButton(String[] names, ButtonType typeButton) {
+        SelenideAppiumElement el;
+        log.info("Click section");
+        for (String name : names) {
+            log.info("Click subsection: {}", name);
+            switch (typeButton) {
+                case TREND:
+                    el = catalogPage.getTrendSubsectionButton(name);
+                    break;
+                case CATALOG:
+                    el = catalogPage.getSubsectionButton(name);
+                    break;
+                default:
+                    log.warn("Unknown button type: {}", typeButton);
+                    continue;
+            }
+            if (el == null) {
+                log.warn("Element for subsection '{}' not found", name);
+                continue;
+            }
+            el.scrollTo().click();
+        }
     }
 }

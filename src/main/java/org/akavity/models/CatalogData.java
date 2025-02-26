@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CatalogData {
-    String section;
-    String subsection;
-    String nextSubsection;
+    String[] sections;
     String title;
 }

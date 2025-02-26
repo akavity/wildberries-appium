@@ -8,8 +8,8 @@ import io.appium.java_client.touch.offset.PointOption;
 import java.time.Duration;
 
 public class Utils {
-    private int START_X = 1000; //
-    private int END_X = 180;    //
+    private int START_X = 1000;
+    private int END_X = 180;
 
     public void sleep(long millis) {
         try {
@@ -27,7 +27,7 @@ public class Utils {
         }
     }
 
-    public void pressElement(int xOffset, int yOffset) {
+    public void clickPoint(int xOffset, int yOffset) {
         TouchAction touch = new TouchAction(AppiumDriverRunner.getAndroidDriver());
         touch.press(PointOption.point(xOffset, yOffset)).release().perform();
     }

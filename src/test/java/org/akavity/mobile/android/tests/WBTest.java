@@ -1,6 +1,7 @@
 package org.akavity.mobile.android.tests;
 
 import org.akavity.annotations.TestData;
+import org.akavity.enums.ButtonType;
 import org.akavity.models.CartData;
 import org.akavity.models.CatalogData;
 import org.akavity.models.ProductData;
@@ -21,9 +22,7 @@ public class WBTest extends BaseLocalTest {
     @Test(description = "Catalog navigation", dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void moveThroughCatalog(CatalogData catalog) {
         tabBarSteps.clickCatalogButton();
-        catalogSteps.clickSectionButton(catalog.getSection());
-        catalogSteps.clickSubsectionButton(catalog.getSubsection());
-        catalogSteps.clickNextSubsectionButton(catalog.getNextSubsection());
+        catalogSteps.clickSubsectionButton(catalog.getSections(), ButtonType.CATALOG);
 
         Assert.assertEquals(catalog.getTitle(), catalogSteps.extractTextFromTitle());
     }
@@ -62,6 +61,7 @@ public class WBTest extends BaseLocalTest {
         tabBarSteps.clickCatalogButton();
         catalogSteps.clickTrendsButton();
         catalogSteps.selectTrend(trendData.getName());
+        catalogSteps.clickSubsectionButton(trendData.getSections(), ButtonType.TREND);
 
         Assert.assertTrue(catalogSteps.isTrendTitleDisplayed(trendData.getTitle()));
     }

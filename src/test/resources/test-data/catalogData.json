@@ -1,8 +1,9 @@
 [
   {
-    "section": "Женщинам",
-    "subsection": "Брюки",
-    "nextSubsection": "no",
+    "sections": [
+      "Женщинам",
+      "Брюки"
+    ],
     "title": "Брюки"
   }
 ]

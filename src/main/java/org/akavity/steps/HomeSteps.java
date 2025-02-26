@@ -25,7 +25,7 @@ public class HomeSteps {
         log.info("Set {} to search and press enter", text);
         homePage.getSearchField().click();
         homePage.getSearchField().setValue(text);
-        utils.pressElement(X_OFFSET, Y_OFFSET);
+        utils.clickPoint(X_OFFSET, Y_OFFSET);
     }
 
     @Step
