@@ -33,4 +33,11 @@ public class HomeSteps {
         log.info("Click suggest: {}", text);
         homePage.getSuggest(text).click();
     }
+
+    @Step
+    public boolean checkCurrencySign(String sign) {
+        boolean result = homePage.getCurrencyFields().stream().allMatch(x->x.getText().contains(sign));
+        log.info("Currency fields contain the sign {}: {}", sign, result);
+        return result;
+    }
 }

@@ -1,7 +1,6 @@
 package org.akavity.mobile;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,8 +9,8 @@ import java.net.URL;
 
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
+@Log4j2
 public class Apps {
-    private static final Logger log = LoggerFactory.getLogger(Apps.class);
     private static final String WILDBERRIES_URL = "https://raw.githubusercontent.com/akavity/wildberries-appium/feature/src/main/java/org/akavity/apps/";
 
     public static File downloadAndroidApp() {

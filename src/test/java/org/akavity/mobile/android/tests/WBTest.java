@@ -56,7 +56,7 @@ public class WBTest extends BaseLocalTest {
     }
 
     @TestData(jsonFile = "trendData", model = "TrendData")
-    @Test(description = "Select the trend", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    @Test(description = "Select a trend", dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void selectTrend(TrendData trendData) {
         tabBarSteps.clickCatalogButton();
         catalogSteps.clickTrendsButton();
