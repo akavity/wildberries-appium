@@ -4,10 +4,12 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.ProductListPage;
+import org.akavity.utils.Utils;
 
 @Log4j2
 public class ProductListSteps {
     ProductListPage productListPage = new ProductListPage();
+    Utils utils = new Utils();
 
     @Step
     public boolean isProductDisplayed(String figure) {
@@ -20,12 +22,34 @@ public class ProductListSteps {
     @Step
     public void clickFirstProduct() {
         log.info("Click on the first product");
-        productListPage.getProducts().first().click();
+        productListPage.getProductContainer().first().click();
     }
 
     @Step
     public void clickFirstAddToCartButton() {
         log.info("Click on the first 'Add to cart' button");
         productListPage.getAddToCartButtons().first().click();
+    }
+
+    @Step
+    public Number getPriceFirstProduct() {
+        Number result = utils.extractPriceFromText(productListPage.getPriceFields().first().getText());
+        log.info("Price first product: {}", result);
+        return result;
+    }
+
+    @Step
+    public String getProductBrand() {
+        String result = productListPage.getBrandFields().first().getText();
+        log.info("Brand name first product: {}", result);
+        return result;
+    }
+
+    @Step
+    public void addProductToFavorite() {
+        log.info("The first product has been added to Favorite");
+        productListPage.getFavoriteButtons()
+                .first()
+                .click();
     }
 }
