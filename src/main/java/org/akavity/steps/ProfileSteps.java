@@ -37,4 +37,23 @@ public class ProfileSteps {
         log.info("Get product name: {}", name);
         return name;
     }
+
+    @Step
+    public void deleteFavorProduct() {
+        log.info("Delete the product from favorite");
+        profilePage.getDeleteButton().click();
+    }
+
+    @Step
+    public void clickYesButton() {
+        log.info("Click yes button");
+        profilePage.getYesButton().click();
+    }
+
+    @Step
+    public boolean isFavorListEmpty() {
+        boolean result = !profilePage.getProductCountField().isDisplayed();
+        log.info("Is list of product empty: {}", result);
+        return result;
+    }
 }

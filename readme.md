@@ -7,7 +7,9 @@
 * Test 3. Adding a product to the cart.
 * Test 4. Removing the product from the cart.
 * Test 5. Select a trend.
-* Test 6. Select a currency
+* Test 6. Select a currency.
+* Test 7. Add a product to favorite.
+* Test 8. Remove the product from favorite.
 
 ## Technologies:
 

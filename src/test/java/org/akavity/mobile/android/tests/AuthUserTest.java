@@ -28,8 +28,8 @@ public class AuthUserTest extends BaseLocalTest {
         Assert.assertTrue(homeSteps.checkCurrencySign(currency.getSign()));
     }
 
-    @TestData(jsonFile = "favorElementData", model = "FavorElementData")
-    @Test(description = "Select a currency", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    @TestData(jsonFile = "favorProductData", model = "FavorProductData")
+    @Test(description = "Add a product to favorite", dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void addProductToFavorite(FavorProductData favor) {
         tabBarSteps.clickHomeButton();
         String productBrandName = productListSteps.getProductBrand();
@@ -42,5 +42,16 @@ public class AuthUserTest extends BaseLocalTest {
 
         Assert.assertTrue(deferredProductName.contains(productBrandName));
         Assert.assertEquals(productPrice, deferredProductPrice);
+    }
+
+    @TestData(jsonFile = "favorProductData", model = "FavorProductData")
+    @Test(dependsOnMethods = "addProductToFavorite", description = "Remove the product from favorite", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void removeProductFromFavorite(FavorProductData favor) {
+        tabBarSteps.clickProfileButton();
+        profileSteps.clickProfileElement(favor.getProfileElement());
+        profileSteps.deleteFavorProduct();
+        profileSteps.clickYesButton();
+
+        Assert.assertTrue(profileSteps.isFavorListEmpty());
     }
 }

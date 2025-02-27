@@ -16,8 +16,10 @@ public class ProfilePage {
 
     // Deferred product
     private SelenideAppiumElement priceField = $(AppiumBy.id("com.wildberries.ru:id/priceValue"));
-
     private SelenideAppiumElement productName = $(AppiumBy.id("com.wildberries.ru:id/item_title"));
+    private SelenideAppiumElement deleteButton = $(AppiumBy.id("com.wildberries.ru:id/deleteButton"));
+    private SelenideAppiumElement productCountField = $(AppiumBy.id("com.wildberries.ru:id/productCount"));
+    private SelenideAppiumElement yesButton = $(AppiumBy.xpath("//android.widget.Button[@text='ДА']"));
 
     public SelenideAppiumElement getPriceField() {
         return priceField;
@@ -25,5 +27,17 @@ public class ProfilePage {
 
     public SelenideAppiumElement getProductName() {
         return productName;
+    }
+
+    public SelenideAppiumElement getDeleteButton() {
+        return deleteButton;
+    }
+
+    public SelenideAppiumElement getProductCountField() {
+        return productCountField;
+    }
+
+    public SelenideAppiumElement getYesButton() {
+        return yesButton;
     }
 }
