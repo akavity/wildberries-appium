@@ -17,6 +17,8 @@
             <class name="org.akavity.mobile.android.tests.AuthUserTest">
                 <methods>
                     <include name="selectCurrency"/>
+                    <include name="addProductToFavorite"/>
+                    <include name="removeProductFromFavorite"/>
                 </methods>
             </class>
         </classes>
