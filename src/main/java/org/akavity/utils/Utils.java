@@ -6,6 +6,8 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
 import java.time.Duration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utils {
     private int START_X = 1000;
@@ -38,5 +40,34 @@ public class Utils {
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
                 .moveTo(PointOption.point(END_X, y))    // endY
                 .release().perform();
+    }
+
+    public Number extractPriceFromText(String text) {
+        String regex;
+        boolean isDouble = false;
+
+        if (text.contains("р.")) {
+            regex = "\\d{1,3}(?: \\d{3})*[,.]\\d{2}";
+            isDouble = true;
+        } else {
+            regex = "\\d{1,3}(?: \\d{3})*";
+        }
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        Number result = null;
+
+        if (matcher.find()) {
+            String numberStr = matcher.group().replace(" ", "");
+
+            if (isDouble) {
+                result = Double.parseDouble(numberStr.replace(",", "."));
+            } else {
+                result = Integer.parseInt(numberStr);
+            }
+        }
+
+        return result;
     }
 }
