@@ -26,9 +26,12 @@ public class ProductListSteps {
     }
 
     @Step
-    public void clickFirstAddToCartButton() {
+    public void clickFirstButtonAddToCart() {
         log.info("Click on the first 'Add to cart' button");
-        productListPage.getAddToCartButtons().first().click();
+        productListPage.getAddToCartButtons()
+                .first()
+                .scrollTo()
+                .click();
     }
 
     @Step

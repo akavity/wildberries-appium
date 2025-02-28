@@ -3,10 +3,12 @@ package org.akavity.steps;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.CartPage;
+import org.akavity.utils.Utils;
 
 @Log4j2
 public class CartSteps {
     CartPage cartPage = new CartPage();
+    Utils utils = new Utils();
 
     @Step
     public boolean isTheCartEmpty() {
@@ -35,5 +37,49 @@ public class CartSteps {
         log.info("Remove a product from the cart");
         cartPage.getProductMenuButton().click();
         cartPage.getRemoveProductButton().click();
+    }
+
+    @Step
+    public void decreaseProductQuantity() {
+        log.info("Click decrease quantity button");
+        cartPage.getDecreaseQuantityButton().click();
+    }
+
+    @Step
+    public void decreaseProductQuantity(int click) {
+        log.info("Click decrease quantity button " + click + " times");
+        for (int i = 0; i < click; i++) {
+            cartPage.getDecreaseQuantityButton().click();
+            utils.sleep();
+        }
+    }
+
+    @Step
+    public void increaseProductQuantity() {
+        log.info("Click increase product quantity");
+        cartPage.getIncreaseQuantityButton().click();
+    }
+
+    @Step
+    public void increaseProductQuantity(int click) {
+        log.info("Click increase quantity button " + click + " times");
+        for (int i = 0; i < click; i++) {
+            cartPage.getIncreaseQuantityButton().click();
+            utils.sleep();
+        }
+    }
+
+    @Step
+    public int getProductQuantity() {
+        int qty = Integer.parseInt(cartPage.getProductQuantityField().getText());
+        log.info("Product quantity: {}", qty);
+        return qty;
+    }
+
+    @Step
+    public Number getPrice() {
+        Number res = utils.extractPriceFromText(cartPage.getProductPriceField().getText());
+        log.info("The product price in the cart: {}", res);
+        return res;
     }
 }
