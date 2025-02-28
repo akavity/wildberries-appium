@@ -10,7 +10,7 @@ import static com.codeborne.selenide.appium.SelenideAppium.$$;
 public class HomePage {
     private final SelenideAppiumElement searchField = $(AppiumBy.xpath("//android.widget.TextView[@text='Поиск']/.."));
 
-    private final SelenideAppiumCollection currencyFields = $$(AppiumBy.id("com.wildberries.ru:id/textCurrentPrice"));
+    private final SelenideAppiumCollection currencyFields = $$(AppiumBy.id("com.wildberries.ru:id/textCurrentPrice")); // must move to ProductList
 
     public SelenideAppiumElement getSearchFieldWithTex(String text) {
         return $(AppiumBy.xpath("//android.widget.EditText[@text='" + text + "']/.."));
