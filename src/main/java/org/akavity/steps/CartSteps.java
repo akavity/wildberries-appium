@@ -5,6 +5,9 @@ import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.CartPage;
 import org.akavity.utils.Utils;
 
+import static com.codeborne.selenide.Condition.clickable;
+import static com.codeborne.selenide.Condition.exist;
+
 @Log4j2
 public class CartSteps {
     CartPage cartPage = new CartPage();
@@ -62,11 +65,12 @@ public class CartSteps {
 
     @Step
     public void increaseProductQuantity(int click) {
+        utils.sleep();
         log.info("Click increase quantity button " + click + " times");
         for (int i = 0; i < click; i++) {
-            cartPage.getIncreaseQuantityButton().click();
-            utils.sleep();
+            cartPage.getIncreaseQuantityButton().shouldBe(clickable).click();
         }
+        utils.sleep();
     }
 
     @Step
@@ -77,9 +81,11 @@ public class CartSteps {
     }
 
     @Step
-    public Number getPrice() {
-        Number res = utils.extractPriceFromText(cartPage.getProductPriceField().getText());
-        log.info("The product price in the cart: {}", res);
-        return res;
+    public double getProductPrice() {
+        String text = cartPage.getProductPriceField().shouldBe(exist).getText();
+        log.info("Product price Text: {}", text);
+        double price = utils.extractPriceFromText(text).doubleValue();
+        log.info("The product price in the cart: {}", price);
+        return price;
     }
 }

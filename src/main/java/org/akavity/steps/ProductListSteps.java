@@ -35,8 +35,8 @@ public class ProductListSteps {
     }
 
     @Step
-    public Number getPriceFirstProduct() {
-        Number result = utils.extractPriceFromText(productListPage.getPriceFields().first().getText());
+    public double getPriceFirstProduct() {
+        double result = utils.extractPriceFromText(productListPage.getPriceFields().first().getText()).doubleValue();
         log.info("Price first product: {}", result);
         return result;
     }

@@ -27,6 +27,7 @@ public class TabBarSteps {
     public void clickCartButton() {
         log.info("Click the Cart button on the tab bar");
         tabBarPage.getCartButton().click();
+        utils.sleep(); // waiting for data to load
     }
 
     @Step
