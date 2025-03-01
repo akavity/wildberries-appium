@@ -50,7 +50,7 @@ public class Utils {
             regex = "\\d{1,3}(?: \\d{3})*[,.]\\d{2}";
             isDouble = true;
         } else {
-            regex = "\\d{1,3}(?: \\d{3})*";
+            regex = "\\d{1,3}(?:[\\s ]?\\d{3})*";
         }
 
         Pattern pattern = Pattern.compile(regex);
@@ -59,7 +59,7 @@ public class Utils {
         Number result = null;
 
         if (matcher.find()) {
-            String numberStr = matcher.group().replace(" ", "");
+            String numberStr = matcher.group().replace(" ", "").replace(" ","");
 
             if (isDouble) {
                 result = Double.parseDouble(numberStr.replace(",", "."));
