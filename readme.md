@@ -10,6 +10,8 @@
 * Test 6. Select a currency.
 * Test 7. Add a product to favorite.
 * Test 8. Remove the product from favorite.
+* Test 9. Increase quantity of products in the basket.
+* Test 10. Decrease quantity of products in the basket.
 
 ## Technologies:
 

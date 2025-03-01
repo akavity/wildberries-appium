@@ -19,6 +19,8 @@
                     <include name="selectCurrency"/>
                     <include name="addProductToFavorite"/>
                     <include name="removeProductFromFavorite"/>
+                    <include name="increaseProductQuantityInCart"/>
+                    <include name="decreaseProductQuantityInCart"/>
                 </methods>
             </class>
         </classes>

@@ -40,7 +40,7 @@ public class WBTest extends BaseLocalTest {
     @Test(description = "Adding a product to the cart", dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void addProductToCart(CartData cart) {
         homeSteps.enterTextToSearch(cart.getProductName());
-        productListSteps.clickFirstAddToCartButton();
+        productListSteps.clickFirstButtonAddToCart();
         tabBarSteps.clickCartButton();
 
         Assert.assertTrue(cartSteps.checkProductName(cart.getPartOfName()));
