@@ -26,6 +26,7 @@ public abstract class AndroidDriverProvider implements WebDriverProvider {
        // options.setCapability("bstack:options", getBrowserstackOptions());
         options.setCapability("appium:settings", getAppiumSettings());
         options.setFullReset(false);
+        options.noReset();
        // options.setApp("D:/stady/QA automation engineer/IT-Academy/class 15/wildberries.ru.apk");
         options.setApp(getApplicationUnderTest());
 //        try {
