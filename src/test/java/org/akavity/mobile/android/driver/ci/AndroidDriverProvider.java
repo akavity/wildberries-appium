@@ -9,6 +9,9 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import static org.akavity.mobile.android.driver.AppiumUtils.*;
 
 public abstract class AndroidDriverProvider implements WebDriverProvider {
@@ -20,15 +23,21 @@ public abstract class AndroidDriverProvider implements WebDriverProvider {
         options.setPlatformName("Android");
         options.setDeviceName("Pixel 8 Pro");
         options.setPlatformVersion("14.0");
-        options.setCapability("bstack:options", getBrowserstackOptions());
-        //options.setCapability("appium:settings", getAppiumSettings());
+       // options.setCapability("bstack:options", getBrowserstackOptions());
+        options.setCapability("appium:settings", getAppiumSettings());
         options.setFullReset(false);
        // options.setApp("D:/stady/QA automation engineer/IT-Academy/class 15/wildberries.ru.apk");
         options.setApp(getApplicationUnderTest());
+//        try {
+//            return new AndroidDriver(browserstackUrl(), options);
+//        } catch (SessionNotCreatedException e) {
+//            return new AndroidDriver(browserstackUrl(), options);
+//        }
+
         try {
-            return new AndroidDriver(browserstackUrl(), options);
-        } catch (SessionNotCreatedException e) {
-            return new AndroidDriver(browserstackUrl(), options);
+            return new io.appium.java_client.android.AndroidDriver(new URL("http://localhost:4723/wd/hub"), options);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
         }
     }
 
