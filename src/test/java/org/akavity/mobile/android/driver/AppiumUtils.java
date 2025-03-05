@@ -9,12 +9,12 @@ public class AppiumUtils {
     private static final HashMap<String, Object> bstackOptions = new HashMap<>();
 
     static {
-//        bstackOptions.put("userName", "githubactions_qxmgVeB");
-//        bstackOptions.put("accessKey", System.getProperty("selenide.bs_key"));
-        bstackOptions.put("appiumVersion", "2.6.0");
-        bstackOptions.put("projectName", "Selenide-Appium");
-        // bstackOptions.put("buildName", getPrettyJobName());
-        bstackOptions.put("interactiveDebugging", true);
+////        bstackOptions.put("userName", "githubactions_qxmgVeB");
+////        bstackOptions.put("accessKey", System.getProperty("selenide.bs_key"));
+//        bstackOptions.put("appiumVersion", "2.6.0");
+//        bstackOptions.put("projectName", "Selenide-Appium");
+//        // bstackOptions.put("buildName", getPrettyJobName());
+//        bstackOptions.put("interactiveDebugging", true);
     }
 
     static {
@@ -32,7 +32,7 @@ public class AppiumUtils {
 
     public static URL browserstackUrl() {
         try {
-            return new URL("https://hub.browserstack.com/wd/hub");
+            return new URL("http://localhost:4723/wd/hub");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
