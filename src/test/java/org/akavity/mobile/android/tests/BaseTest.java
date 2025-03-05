@@ -20,8 +20,8 @@ public class BaseTest  {   //  extends ITTest
     public static void setup() {
         closeWebDriver();
         Configuration.browser = isCi() ? CiAndroidDriverWithApp.class.getName() : LocalAndroidDriverWithApp.class.getName();
+        SelenideAppium.launchApp();
         if (!isCi()) {
-            SelenideAppium.launchApp();
             SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true));
         }
 //       SelenideAppium.launchApp();
