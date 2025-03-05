@@ -20,8 +20,10 @@ public abstract class AndroidDriverProvider implements WebDriverProvider {
         options.setPlatformName("Android");
         options.setDeviceName("Pixel 8 Pro");
         options.setPlatformVersion("14.0");
-        options.setCapability("bstack:options", getBrowserstackOptions());
+        //options.setCapability("bstack:options", getBrowserstackOptions());
         options.setCapability("appium:settings", getAppiumSettings());
+        options.setFullReset(false);
+       // options.setApp("D:/stady/QA automation engineer/IT-Academy/class 15/wildberries.ru.apk");
         options.setApp(getApplicationUnderTest());
         try {
             return new AndroidDriver(browserstackUrl(), options);
