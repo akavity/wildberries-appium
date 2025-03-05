@@ -34,13 +34,6 @@ public abstract class AndroidDriverProvider implements WebDriverProvider {
         }
     }
 
-//        try {
-//            return new io.appium.java_client.android.AndroidDriver(new URL("http://localhost:4723/wd/hub"), options);
-//        } catch (MalformedURLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
     protected abstract String getApplicationUnderTest();
 
 }
