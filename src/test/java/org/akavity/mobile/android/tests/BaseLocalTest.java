@@ -15,8 +15,9 @@ public class BaseLocalTest {   //  extends ITTest
     @BeforeMethod
     public static void setup() {
         closeWebDriver();
-        Configuration.browser = isCi() ? CiAndroidDriverWithApp.class.getName() : LocalAndroidDriverWithApp.class.getName();
+       // Configuration.browser = isCi() ? CiAndroidDriverWithApp.class.getName() : LocalAndroidDriverWithApp.class.getName();
         //Configuration.browser =  LocalAndroidDriverWithApp.class.getName();
+        Configuration.browser =  CiAndroidDriverWithApp.class.getName();
         SelenideAppium.launchApp();
         SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true));
     }
