@@ -11,7 +11,7 @@ import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class WBTest extends BaseLocalTest {
+public class WBTest extends BaseTest {
     TabBarSteps tabBarSteps = new TabBarSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
     HomeSteps homeSteps = new HomeSteps();

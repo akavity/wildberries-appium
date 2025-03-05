@@ -1,4 +1,4 @@
-package org.akavity.mobile.android.driver;
+package org.akavity.mobile.android.driver.local;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
@@ -16,6 +16,7 @@ import java.net.URL;
 import static org.akavity.mobile.android.driver.AppiumUtils.getAppiumSettings;
 
 public abstract class LocalAndroidDriverProvider implements WebDriverProvider {
+    @Override
     @NonNull
     public WebDriver createDriver(@NonNull Capabilities capabilities) {
         UiAutomator2Options options = getUiAutomator2Options();
