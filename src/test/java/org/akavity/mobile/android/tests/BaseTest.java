@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static java.time.Duration.ofMinutes;
 import static org.akavity.mobile.android.driver.AppiumUtils.isCi;
 
-public class BaseTest  {   //  extends ITTest
+public class BaseTest {
     @BeforeMethod
     public static void setup() {
         closeWebDriver();
@@ -24,8 +24,6 @@ public class BaseTest  {   //  extends ITTest
         if (!isCi()) {
             SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true));
         }
-//       SelenideAppium.launchApp();
-        // SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true));
         Configuration.timeout = 10_000;
         Configuration.pageLoadTimeout = -1;
         Configuration.remoteConnectionTimeout = Duration.ofSeconds(10).toMillis();
