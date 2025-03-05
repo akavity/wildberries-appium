@@ -5,7 +5,6 @@ import com.codeborne.selenide.appium.SelenideAppium;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.codeborne.selenide.webdriver.HttpClientTimeouts;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.akavity.mobile.ITTest;
 import org.akavity.mobile.android.driver.ci.CiAndroidDriverWithApp;
 import org.akavity.mobile.android.driver.local.LocalAndroidDriverWithApp;
 import org.testng.annotations.BeforeMethod;
