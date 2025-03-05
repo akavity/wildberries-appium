@@ -9,7 +9,7 @@ import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AuthUserTest extends BaseLocalTest {
+public class AuthUserTest extends BaseTest {
     TabBarSteps tabBarSteps = new TabBarSteps();
     ProfileSteps profileSteps = new ProfileSteps();
     ProductSteps productSteps = new ProductSteps();
