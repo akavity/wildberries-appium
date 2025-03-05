@@ -15,13 +15,15 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static java.time.Duration.ofMinutes;
 import static org.akavity.mobile.android.driver.AppiumUtils.isCi;
 
-public class BaseLocalTest {   //  extends ITTest
+public class BaseTest {
     @BeforeMethod
     public static void setup() {
         closeWebDriver();
         Configuration.browser = isCi() ? CiAndroidDriverWithApp.class.getName() : LocalAndroidDriverWithApp.class.getName();
         SelenideAppium.launchApp();
-        SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true));
+        if (!isCi()) {
+            SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true));
+        }
         Configuration.timeout = 10_000;
         Configuration.pageLoadTimeout = -1;
         Configuration.remoteConnectionTimeout = Duration.ofSeconds(10).toMillis();
