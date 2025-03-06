@@ -11,10 +11,7 @@ public class ProductListPage {
     private final SelenideAppiumCollection priceFields = $$(AppiumBy.id("com.wildberries.ru:id/textCurrentPrice"));
     private final SelenideAppiumCollection brandFields = $$(AppiumBy.id("com.wildberries.ru:id/textProductBrand"));
     private final SelenideAppiumCollection favoriteButtons = $$(AppiumBy.id("com.wildberries.ru:id/buttonToFavorite"));
-
-    public SelenideAppiumCollection getFigures(String figure) {
-        return $$(AppiumBy.xpath("//android.widget.TextView[contains(@content-desc,'" + figure + "')]"));
-    }
+    private final SelenideAppiumCollection productNameFields = $$(AppiumBy.id("com.wildberries.ru:id/textProductName"));
 
     public SelenideAppiumCollection getProductContainer() {
         return productContainer;
@@ -34,5 +31,9 @@ public class ProductListPage {
 
     public SelenideAppiumCollection getFavoriteButtons() {
         return favoriteButtons;
+    }
+
+    public SelenideAppiumCollection getProductNameFields() {
+        return productNameFields;
     }
 }
