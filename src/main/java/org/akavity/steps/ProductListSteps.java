@@ -12,10 +12,10 @@ public class ProductListSteps {
     Utils utils = new Utils();
 
     @Step
-    public boolean isProductDisplayed(String figure) {
-        SelenideElement el = productListPage.getFigures(figure).first();
-        boolean result = el.getText().toLowerCase().contains(figure.toLowerCase());
-        log.info("Is product {} displayed: {} - '{}'", figure, result, el.getText());
+    public boolean isProductDisplayed(String name) {
+        SelenideElement el = productListPage.getProductNameFields().first();
+        boolean result = el.getText().toLowerCase().contains(name.toLowerCase());
+        log.info("Is product {} displayed: {} - '{}'", name, result, el.getText());
         return result;
     }
 

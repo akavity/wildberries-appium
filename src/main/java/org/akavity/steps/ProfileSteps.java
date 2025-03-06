@@ -25,8 +25,8 @@ public class ProfileSteps {
     }
 
     @Step
-    public Number getProductPrice() {
-        Number price = utils.extractPriceFromText(profilePage.getPriceField().getText());
+    public Double getProductPrice() {
+        Double price = utils.extractPriceFromText(profilePage.getPriceField().getText()).doubleValue();
         log.info("Get product price: {}", price);
         return price;
     }
