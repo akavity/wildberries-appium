@@ -1,4 +1,4 @@
-package org.akavity.mobile.android.driver.local;
+package org.akavity.mobile.android.drivers.local;
 
 import java.io.File;
 

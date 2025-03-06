@@ -1,4 +1,4 @@
-package org.akavity.mobile.android.driver;
+package org.akavity.mobile.android.drivers;
 
 import java.net.MalformedURLException;
 import java.net.URL;

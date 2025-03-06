@@ -1,4 +1,4 @@
-package org.akavity.mobile.android.driver.ci;
+package org.akavity.mobile.android.drivers.ci;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
@@ -9,10 +9,10 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 
-import static org.akavity.mobile.android.driver.AppiumUtils.browserstackUrl;
-import static org.akavity.mobile.android.driver.AppiumUtils.getAppiumSettings;
+import static org.akavity.mobile.android.drivers.AppiumUtils.browserstackUrl;
+import static org.akavity.mobile.android.drivers.AppiumUtils.getAppiumSettings;
 
-public abstract class AndroidDriverProvider implements WebDriverProvider {
+public abstract class CiAndroidDriverProvider implements WebDriverProvider {
     @Override
     @NonNull
     public WebDriver createDriver(@NonNull Capabilities capabilities) {

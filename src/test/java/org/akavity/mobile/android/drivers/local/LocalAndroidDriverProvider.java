@@ -1,4 +1,4 @@
-package org.akavity.mobile.android.driver.local;
+package org.akavity.mobile.android.drivers.local;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
@@ -13,7 +13,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static org.akavity.mobile.android.driver.AppiumUtils.getAppiumSettings;
+import static org.akavity.mobile.android.drivers.AppiumUtils.getAppiumSettings;
 
 public abstract class LocalAndroidDriverProvider implements WebDriverProvider {
     @Override

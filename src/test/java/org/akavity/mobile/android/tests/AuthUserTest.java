@@ -32,13 +32,13 @@ public class AuthUserTest extends BaseTest {
     @Test(description = "Add a product to favorite", dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void addProductToFavorite(FavorProductData favor) {
         tabBarSteps.clickHomeButton();
-        String productBrandName = productListSteps.getProductBrand();
-        Number productPrice = productListSteps.getPriceFirstProduct();
+        String productBrandName = productListSteps.getProductBrand().toLowerCase();
+        Double productPrice = productListSteps.getPriceFirstProduct();
         productListSteps.addProductToFavorite();
         tabBarSteps.clickProfileButton();
         profileSteps.clickProfileElement(favor.getProfileElement());
-        Number deferredProductPrice = profileSteps.getProductPrice();
-        String deferredProductName = profileSteps.getProductName();
+        Double deferredProductPrice = profileSteps.getProductPrice();
+        String deferredProductName = profileSteps.getProductName().toLowerCase();
 
         Assert.assertTrue(deferredProductName.contains(productBrandName));
         Assert.assertEquals(productPrice, deferredProductPrice);

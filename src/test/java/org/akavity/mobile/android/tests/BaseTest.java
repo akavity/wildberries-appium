@@ -5,15 +5,15 @@ import com.codeborne.selenide.appium.SelenideAppium;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.codeborne.selenide.webdriver.HttpClientTimeouts;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.akavity.mobile.android.driver.ci.CiAndroidDriverWithApp;
-import org.akavity.mobile.android.driver.local.LocalAndroidDriverWithApp;
+import org.akavity.mobile.android.drivers.ci.CiAndroidDriverWithApp;
+import org.akavity.mobile.android.drivers.local.LocalAndroidDriverWithApp;
 import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static java.time.Duration.ofMinutes;
-import static org.akavity.mobile.android.driver.AppiumUtils.isCi;
+import static org.akavity.mobile.android.drivers.AppiumUtils.isCi;
 
 public class BaseTest {
     @BeforeMethod
