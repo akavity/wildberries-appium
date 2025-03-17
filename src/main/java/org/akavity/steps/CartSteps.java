@@ -75,6 +75,7 @@ public class CartSteps {
 
     @Step
     public int getProductQuantity() {
+        utils.sleep(1300);
         int qty = Integer.parseInt(cartPage.getProductQuantityField().getText());
         log.info("Product quantity: {}", qty);
         return qty;
@@ -82,6 +83,7 @@ public class CartSteps {
 
     @Step
     public double getProductPrice() {
+        utils.sleep(1300);
         String text = cartPage.getProductPriceField().shouldBe(exist).getText();
         log.info("Product price Text: {}", text);
         double price = utils.extractPriceFromText(text).doubleValue();
