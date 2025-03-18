@@ -56,4 +56,36 @@ public class ProfileSteps {
         log.info("Is list of product empty: {}", result);
         return result;
     }
+
+    @Step
+    public void linkCard() {
+        log.info("Click \"Link card\" button");
+        profilePage.getLinkCardButton().click();
+    }
+
+    @Step
+    public void enterCardNumber(String number) {
+        log.info("Enter new card number: {}", number);
+        profilePage.getCardNumberField().setValue(number);
+    }
+
+    @Step
+    public void enterValidPeriod(String data) {
+        log.info("Enter valid period: {}", data);
+        profilePage.getValidPeriodField().setValue(data);
+    }
+
+    @Step
+    public void enterCVV(String cvv) {
+        log.info("Enter cvv: {}", cvv);
+        profilePage.getCvvField().setValue(cvv);
+    }
+
+    @Step
+    public boolean isNewCardDisplayed(String number) {
+        utils.sleep();
+        boolean result = profilePage.getProfileElement(number).isDisplayed();
+        log.info("Is part of number displayed {}: {}", number, result);
+        return result;
+    }
 }
