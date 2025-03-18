@@ -1,6 +1,7 @@
 package org.akavity.mobile.android.tests;
 
 import org.akavity.annotations.TestData;
+import org.akavity.models.CardData;
 import org.akavity.models.CurrencyData;
 import org.akavity.models.FavorProductData;
 import org.akavity.models.ProductQtyData;
@@ -16,6 +17,19 @@ public class AuthUserTest extends BaseTest {
     ProductListSteps productListSteps = new ProductListSteps();
     HomeSteps homeSteps = new HomeSteps();
     CartSteps cartSteps = new CartSteps();
+
+    @TestData(jsonFile = "cardData", model = "CardData")
+    @Test(description = "Link a card", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void linkCard(CardData cardData) {
+        tabBarSteps.clickProfileButton();
+        profileSteps.clickProfileElement(cardData.getProfileElement());
+        profileSteps.linkCard();
+        profileSteps.enterCardNumber(cardData.getCardNumber());
+        profileSteps.enterValidPeriod(cardData.getValidPeriod());
+        profileSteps.enterCVV(cardData.getCvv());
+
+        Assert.assertTrue(profileSteps.isNewCardDisplayed(cardData.getPartOfNumber()));
+    }
 
     @TestData(jsonFile = "currencyData", model = "CurrencyData")
     @Test(description = "Select a currency", dataProviderClass = JsonReader.class, dataProvider = "getData")
