@@ -14,6 +14,7 @@
 * Test 10. Decrease quantity of products in the basket.
 * Test 11. Link a card.
 * Test 12. View reviews and ratings.
+* Test 13. View questions about the product.
 
 ## Technologies:
 

@@ -31,4 +31,18 @@ public class ProductSteps {
         log.info("Is title reviews and ratings displayed: {}", result);
         return result;
     }
+
+    @Step
+    public void clickQuestionsButton() {
+        utils.sleep(1500);
+        log.info("Click questions button");
+        productPage.getQuestionsButton().scrollTo().click();
+    }
+
+    @Step
+    public boolean isQuestionsTitleDisplayed() {
+        boolean result = productPage.getQuestionsTitle().isDisplayed();
+        log.info("Is title questions displayed: {}", result);
+        return result;
+    }
 }

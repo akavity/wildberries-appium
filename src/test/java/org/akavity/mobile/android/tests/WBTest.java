@@ -74,4 +74,12 @@ public class WBTest extends BaseTest {
 
         Assert.assertTrue(productSteps.isReviewsTitleDisplayed());
     }
+
+    @Test(description = "View questions about the product")
+    public void viewQuestions() {
+        productListSteps.clickFirstProduct();
+        productSteps.clickQuestionsButton();
+
+        Assert.assertTrue(productSteps.isQuestionsTitleDisplayed());
+    }
 }
