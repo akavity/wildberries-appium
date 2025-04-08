@@ -12,6 +12,7 @@
                     <include name="addProductToCart"/>
                     <include name="removeProductFromCart"/>
                     <include name="selectTrend"/>
+                    <include name="viewReviews"/>
                 </methods>
             </class>
             <class name="org.akavity.mobile.android.tests.AuthUserTest">

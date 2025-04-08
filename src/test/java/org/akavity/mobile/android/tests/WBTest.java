@@ -16,6 +16,7 @@ public class WBTest extends BaseTest {
     CatalogSteps catalogSteps = new CatalogSteps();
     HomeSteps homeSteps = new HomeSteps();
     ProductListSteps productListSteps = new ProductListSteps();
+    ProductSteps productSteps = new ProductSteps();
     CartSteps cartSteps = new CartSteps();
 
     @TestData(jsonFile = "catalogData", model = "CatalogData")
@@ -64,5 +65,13 @@ public class WBTest extends BaseTest {
         catalogSteps.clickSubsectionButton(trendData.getSections(), ButtonType.TREND);
 
         Assert.assertTrue(catalogSteps.isTrendTitleDisplayed(trendData.getTitle()));
+    }
+
+    @Test(description = "View reviews and ratings")
+    public void viewReviews() {
+        productListSteps.clickFirstProduct();
+        productSteps.clickReviewButton();
+
+        Assert.assertTrue(productSteps.isReviewsTitleDisplayed());
     }
 }
